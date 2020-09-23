@@ -2,6 +2,9 @@
 
 Some of my favorites talks on Chaos Engineering. These are not tutorials, but they cover the theory and reasons behind this discipline.
 
+## Practical Chaos Engineering breaking things on purpose to make them more resilient against failure
+[![Practical Chaos Engineering](https://img.youtube.com/vi/w_Y6C0QgmL0/0.jpg)](https://www.youtube.com/watch?v=w_Y6C0QgmL0)
+
 ## Chaos Engineering - What is it, and where it's going
 
 Adrian Cockroft, of Netflix and Amazon fame, talks about what's chaos engineering, why is useful, and what can we do with it.
@@ -23,6 +26,6 @@ How and Why Netflix does Chaos Engineering
 
 ## GameDay: Creating Resiliency Through Destruction
 
-The talk that started it all, by Jesse Robbins 
+The talk that started it all, by Master of Disaster Jesse Robbins 
 
 [![Chaos Engineering by Lorin Hochstein](https://img.youtube.com/vi/zoz0ZjfrQ9s/0.jpg)](https://www.youtube.com/watch?v=zoz0ZjfrQ9s)
