@@ -20,3 +20,9 @@ How and Why Netflix does Chaos Engineering
 
 [![Chaos Engineering by Lorin Hochstein](https://img.youtube.com/vi/vq4QZ4_YDok/0.jpg)](https://www.youtube.com/watch?v=vq4QZ4_YDok)
 
+
+## GameDay: Creating Resiliency Through Destruction
+
+The talk that started it all, by Jesse Robbins 
+
+[![Chaos Engineering by Lorin Hochstein](https://img.youtube.com/vi/zoz0ZjfrQ9s/0.jpg)](https://www.youtube.com/watch?v=zoz0ZjfrQ9s)
