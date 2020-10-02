@@ -1,0 +1,15 @@
+name: intro-to-chaos-engineering
+image: ramiro/intro-to-chaos
+command:
+- bash
+volumes:
+- /root/.cache/pip
+sync:
+- .:/usr/src/app
+remote: 22000
+forward:
+- 8080:8080
+reverse:
+- 9000:9000
+environment:
+  - CHAOSTOOLKIT_IN_POD=true
