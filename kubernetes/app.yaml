@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - image: okteto/hello-world:golang
+        name: hello-world
+        resources:
+          limits:
+            memory: 64Mi
+            cpu: 50m
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "hello-world"
+    port: 8080
+  selector:
+    app: hello-world

@@ -5,7 +5,7 @@ attrs==20.2.0
 cachetools==4.1.1
 certifi==2020.6.20
 chaostoolkit==1.7.0
-git+https://github.com/rberrelleza/chaostoolkit-kubernetes@33407de338380d0d8936e9a95be3979902584ec1#egg=chaostoolkit_kubernetes
+-e git+https://github.com/rberrelleza/chaostoolkit-kubernetes@33407de338380d0d8936e9a95be3979902584ec1#egg=chaostoolkit_kubernetes
 chaostoolkit-lib==1.15.0
 chaostoolkit-toxiproxy==0.3.0
 chardet==3.0.4
