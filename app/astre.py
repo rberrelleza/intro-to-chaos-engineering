@@ -42,13 +42,14 @@ def run():
 
     cherrypy.config.update({
         "environment": "production",
-        "log.screen": True,
+        "log.error_file" :"astre.log",
         "server.socket_port": 8444,
         "server.ssl_module": "builtin",
         "server.ssl_private_key": os.path.join(cur_dir, "key.pem"),
         "server.ssl_certificate": os.path.join(cur_dir, "cert.pem")
     })
-    PIDFile(cherrypy.engine, 'astre.pid').subscribe()
+    PIDFile(cherrypy.engine, '/var/run/astre.pid').subscribe()
+    Daemonizer(cherrypy.engine).subscribe()
     cherrypy.quickstart(Root())
 
 

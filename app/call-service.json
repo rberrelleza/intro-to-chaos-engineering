@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "title": "Will the service work end to end?",
+  "description": "When a request is issued to astre, it should respond.",
+  "tags": ["tls"],
+  "steady-state-hypothesis": {
+      "title": "Application responds",
+      "probes": [
+          {
+              "type": "probe",
+              "name": "the-astre-service-must-be-running",
+              "tolerance": true,
+              "provider": {
+                  "type": "python",
+                  "module": "os.path",
+                  "func": "exists",
+                  "arguments": {
+                      "path": "/var/run/astre.pid"
+                  }
+              }
+          },
+          {
+              "type": "probe",
+              "name": "the-sunset-service-must-be-running",
+              "tolerance": true,
+              "provider": {
+                  "type": "python",
+                  "module": "os.path",
+                  "func": "exists",
+                  "arguments": {
+                      "path": "/var/run/sunset.pid"
+                  }
+              }
+          }
+      ]
+  },
+  "method": [
+    {
+      "type": "action",
+      "name": "we-can-request-sunset",
+      "tolerance": 200,
+      "provider": {
+          "type": "http",
+          "timeout": 3,
+          "verify_tls": false,
+          "url": "http://localhost:8080/city/Paris"
+      }
+  }
+  ]
+}

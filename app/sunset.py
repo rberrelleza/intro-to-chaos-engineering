@@ -9,6 +9,10 @@ cert_path = os.path.join(cur_dir, "cert.pem")
 
 
 class Root:
+     @cherrypy.expose
+    def index(self, name):
+        return "ok"
+        
     @cherrypy.expose
     def city(self, name):
         r = requests.post("https://localhost:8444/", timeout=(2, 2), json={
@@ -29,11 +33,13 @@ def run():
 
     cherrypy.config.update({
         "environment": "production",
-        "log.screen": True,
+        "log.error_file" :"sunset.log",
         "server.socket_host": "0.0.0.0",
         "server.socket_port": 8080,
+        
     })
-    PIDFile(cherrypy.engine, 'sunset.pid').subscribe()
+    PIDFile(cherrypy.engine, '/var/run/sunset.pid').subscribe()
+    Daemonizer(cherrypy.engine).subscribe()
     cherrypy.quickstart(Root())
 
 
