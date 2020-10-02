@@ -9,10 +9,10 @@ cert_path = os.path.join(cur_dir, "cert.pem")
 
 
 class Root:
-     @cherrypy.expose
-    def index(self, name):
+    @cherrypy.expose
+    def index(self):
         return "ok"
-        
+
     @cherrypy.expose
     def city(self, name):
         r = requests.post("https://localhost:8444/", timeout=(2, 2), json={

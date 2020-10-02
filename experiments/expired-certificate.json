@@ -82,7 +82,7 @@
                 "arguments": "--echo -HUP -F /var/run/sunset.pid"
             },
             "pauses": {
-                "after": 3
+                "after": 30
             }
         }
     ],

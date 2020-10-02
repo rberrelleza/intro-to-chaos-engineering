@@ -37,3 +37,5 @@ Once your remote environment is running, you can connect to with:
 Experiments are meant to be run from the root of this repo.
 
 1. `chaos run experiments/call-service.json`
+1. `chaos run experiments/expired-certificate.json`
+1. `chaos run experiments/kubernetes.json`
