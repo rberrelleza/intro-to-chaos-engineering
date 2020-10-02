@@ -1,11 +1,8 @@
 {
     "version": "1.0.0",
-    "title": "What is the impact of an expired certificate on our application chain?",
-    "description": "If a certificate expires, we should gracefully deal with the issue.",
+    "title": "What is the impact of high latency?",
+    "description": "If the network slows down, we should gracefully deal with the issue.",
     "tags": ["network"],
-    "configuration": {
-        "toxiproxy_host" : "127.0.0.1"
-    },
     "steady-state-hypothesis": {
         "title": "Application responds",
         "probes": [
@@ -46,36 +43,21 @@
                     "verify_tls": false,
                     "url": "http://localhost:8474/proxies"
                 }
-            },
-            {
-                "type": "probe",
-                "name": "we-can-request-sunset",
-                "tolerance": 200,
-                "provider": {
-                    "type": "http",
-                    "timeout": 3,
-                    "verify_tls": false,
-                    "url": "http://localhost:8080/city/Paris"
-                }
             }
         ]
     },
     "method": [
-      {
-        "name": "create-latency-toxic",
-        "provider": {
-            "arguments": {
-            "toxic_name": "latency",
-            "for_proxy": "astre.py",
-            "latency": 100000
-            },
-            "type": "python",
-            "func": "create_latency_toxic",
-            "module": "chaostoxi.toxic.actions"
-        },
-        "type": "action"
-      }
+        {
+            "type": "action",
+            "name": "we-can-request-sunset",
+            "tolerance": 200,
+            "provider": {
+                "type": "http",
+                "timeout": 3,
+                "verify_tls": false,
+                "url": "http://localhost:8080/city/Paris"
+            }
+        }
     ],
-    "rollbacks": [
-    ]
+    "rollbacks": []
 }
