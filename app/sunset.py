@@ -15,7 +15,7 @@ class Root:
 
     @cherrypy.expose
     def city(self, name):
-        r = requests.post("https://localhost:8444/", timeout=(2, 2), json={
+        r = requests.post("https://localhost:8444", timeout=(2, 2), json={
             "city": name
         }, verify=cert_path)
 
@@ -33,6 +33,7 @@ def run():
 
     cherrypy.config.update({
         "environment": "production",
+        "log.screen" : True,
         "log.error_file" :"sunset.log",
         "server.socket_host": "0.0.0.0",
         "server.socket_port": 8080,

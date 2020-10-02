@@ -39,11 +39,15 @@ class Root:
 
 def run():
     cur_dir = os.path.abspath(os.path.dirname(__file__))
+    port = 8444
+    if "ASTRE_PORT" in os.environ:
+        port = int(os.environ["ASTRE_PORT"])
 
     cherrypy.config.update({
         "environment": "production",
+        "log.screen" :True,
         "log.error_file" :"astre.log",
-        "server.socket_port": 8444,
+        "server.socket_port": port,
         "server.ssl_module": "builtin",
         "server.ssl_private_key": os.path.join(cur_dir, "key.pem"),
         "server.ssl_certificate": os.path.join(cur_dir, "cert.pem")
