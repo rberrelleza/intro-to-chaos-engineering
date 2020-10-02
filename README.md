@@ -10,6 +10,8 @@ I recommend you take a look at one (or all) of the talks [listed here](docs/reso
 
 Articles, blog posts, getting started guides [listed here](docs/links.md).
 
+Slides from [the talk are available here](docs/intro-to-chaos-testing.pdf).
+
 
 ## Tutorial
 
@@ -24,7 +26,7 @@ You can also use https://github.com/okteto/okteto to run the samples on a pre-co
 
 1. [Install okteto CLI](https://okteto.com/docs/getting-started/installation/index.html)
 1. `okteto namespace`: This will create a free account on [Okteto Cloud](https://cloud.okteto.com) to run your dev container, and download the necessary credentials.
-1. `okteto up`: This will start the remote development environment from you, and give you a remote terminal. 
+1. `okteto utoxiproxy toxic addp`: This will start the remote development environment from you, and give you a remote terminal. 
 
 Once your remote environment is running, you can connect to with:
 1. `okteto exec bash`
