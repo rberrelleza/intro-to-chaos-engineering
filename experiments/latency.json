@@ -3,6 +3,9 @@
     "title": "What is the impact of high latency?",
     "description": "If the network slows down, we should gracefully deal with the issue.",
     "tags": ["network"],
+    "configuration": {
+        "toxiproxy_host" : "localhost"
+    },
     "steady-state-hypothesis": {
         "title": "Application responds",
         "probes": [
@@ -43,21 +46,55 @@
                     "verify_tls": false,
                     "url": "http://localhost:8474/proxies"
                 }
+            },
+            {
+                "type": "probe",
+                "name": "we-can-request-sunset",
+                "tolerance": 200,
+                "provider": {
+                    "type": "http",
+                    "timeout": 3,
+                    "verify_tls": false,
+                    "url": "http://localhost:8080/city/Paris"
+                }
             }
         ]
     },
     "method": [
         {
             "type": "action",
-            "name": "we-can-request-sunset",
-            "tolerance": 200,
+            "name": "create_latency_toxic",
             "provider": {
-                "type": "http",
-                "timeout": 3,
-                "verify_tls": false,
-                "url": "http://localhost:8080/city/Paris"
+                "type": "python",
+                "module": "chaostoxi.toxic.actions",
+                "func": "create_latency_toxic",
+                "arguments": {
+                    "for_proxy": "astre.py",
+                    "toxic_name": "latency_toxic",
+                    "latency": 5000
+                }
+            },
+            "pauses": {
+                "after": 3
             }
         }
     ],
-    "rollbacks": []
+    "rollbacks": [
+        {
+            "type": "action",
+            "name": "delete_latency_toxic",
+            "provider": {
+                "type": "python",
+                "module": "chaostoxi.toxic.actions",
+                "func": "delete_toxic",
+                "arguments": {
+                    "for_proxy": "astre.py",
+                    "toxic_name": "latency_toxic"
+                }
+            },
+            "pauses": {
+                "after": 1
+            }
+        }
+    ]
 }

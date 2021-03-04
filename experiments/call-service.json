@@ -36,7 +36,7 @@
   },
   "method": [
     {
-      "type": "action",
+      "type": "probe",
       "name": "we-can-request-sunset",
       "tolerance": 200,
       "provider": {
