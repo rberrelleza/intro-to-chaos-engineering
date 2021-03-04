@@ -52,7 +52,7 @@
             "provider": {
                 "type": "process",
                 "path": "cp",
-                "arguments": "expired-cert.pem cert.pem"
+                "arguments": "app/expired-cert.pem app/cert.pem"
             }
         },
         {
@@ -61,7 +61,7 @@
             "provider": {
                 "type": "process",
                 "path": "openssl",
-                "arguments": "x509 -enddate -noout -in cert.pem"
+                "arguments": "x509 -enddate -noout -in app/cert.pem"
             }
         },
         {
@@ -83,6 +83,17 @@
             },
             "pauses": {
                 "after": 30
+            }
+        },
+        {
+            "type": "probe",
+            "name": "we-can-request-sunset",
+            "tolerance": 200,
+            "provider": {
+                "type": "http",
+                "timeout": 3,
+                "verify_tls": false,
+                "url": "http://localhost:8080/city/Paris"
             }
         }
     ],
