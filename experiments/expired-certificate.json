@@ -15,7 +15,7 @@
                     "module": "os.path",
                     "func": "exists",
                     "arguments": {
-                        "path": "/var/run/astre.pid"
+                        "path": "/tmp/astre.pid"
                     }
                 }
             },
@@ -28,7 +28,7 @@
                     "module": "os.path",
                     "func": "exists",
                     "arguments": {
-                        "path": "/var/run/sunset.pid"
+                        "path": "/tmp/sunset.pid"
                     }
                 }
             },
@@ -70,7 +70,7 @@
             "provider": {
                 "type": "process",
                 "path": "pkill",
-                "arguments": "--echo -HUP -F /var/run/astre.pid"
+                "arguments": "--echo -HUP -F /tmp/astre.pid"
             }
         },
         {
@@ -79,7 +79,7 @@
             "provider": {
                 "type": "process",
                 "path": "pkill",
-                "arguments": "--echo -HUP -F /var/run/sunset.pid"
+                "arguments": "--echo -HUP -F /tmp/sunset.pid"
             },
             "pauses": {
                 "after": 30

@@ -52,7 +52,7 @@ def run():
         "server.ssl_private_key": os.path.join(cur_dir, "key.pem"),
         "server.ssl_certificate": os.path.join(cur_dir, "cert.pem")
     })
-    PIDFile(cherrypy.engine, '/var/run/astre.pid').subscribe()
+    PIDFile(cherrypy.engine, '/tmp/astre.pid').subscribe()
     Daemonizer(cherrypy.engine).subscribe()
     cherrypy.quickstart(Root())
 

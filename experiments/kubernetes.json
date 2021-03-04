@@ -6,7 +6,7 @@
       "title": "Verifying service remains healthy",
       "probes": [
           {
-              "name": "all-our-microservices-should-be-healthy",
+              "name": "all-services-are-healthy",
               "type": "probe",
               "tolerance": true,
               "provider": {
@@ -14,8 +14,8 @@
                   "module": "chaosk8s.probes",
                   "func": "deployment_available_and_healthy",
                   "arguments": {
-                      "name": "guestbook",
-                      "ns": "chaos-rberrelleza"
+                      "name": "hello-world",
+                      "ns": "ramiro"
                   }
               }
           },
@@ -42,13 +42,56 @@
             "func": "terminate_pods",
             "arguments": {
                 "label_selector": "app=hello-world",
-                "ns": "chaos-rberrelleza",
-                "rand": true
+                "rand": true,
+                "ns": "ramiro"
             }
         },
         "pauses": {
             "after": 2
         }
+    },
+    {
+        "type": "probe",
+        "name": "provider-should-be-in-a-broken-state",
+        "provider": {
+            "type": "python",
+            "module": "chaosk8s.probes",
+            "func": "deployment_not_fully_available",
+            "arguments": {
+                "name": "hello-world",
+                "ns": "ramiro",
+                "timeout": 60
+            }
+        }
+    },
+    {
+        "type": "probe",
+        "name": "consumer-service-must-still-respond",
+        "provider": {
+            "type": "http",
+            "url": "http://hello-world:8080",
+            "timeout": 5
+        }
+    },
+    {
+        "type": "probe",
+        "name": "provider-is-back-to-a-healthy-state",
+        "tolerance": true,
+        "provider": {
+            "type": "python",
+            "module": "chaosk8s.probes",
+            "func": "deployment_available_and_healthy",
+            "arguments": {
+                "name": "hello-world",
+                "ns": "ramiro"
+            }
+        },
+        "pauses": {
+            "before": 30
+        }
+    },
+    {
+        "ref": "all-services-are-healthy"
     }
 ]
 }

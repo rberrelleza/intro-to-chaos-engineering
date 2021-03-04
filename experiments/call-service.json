@@ -15,7 +15,7 @@
                   "module": "os.path",
                   "func": "exists",
                   "arguments": {
-                      "path": "/var/run/astre.pid"
+                      "path": "/tmp/astre.pid"
                   }
               }
           },
@@ -28,7 +28,7 @@
                   "module": "os.path",
                   "func": "exists",
                   "arguments": {
-                      "path": "/var/run/sunset.pid"
+                      "path": "/tmp/sunset.pid"
                   }
               }
           }

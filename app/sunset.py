@@ -39,7 +39,7 @@ def run():
         "server.socket_port": 8080,
         
     })
-    PIDFile(cherrypy.engine, '/var/run/sunset.pid').subscribe()
+    PIDFile(cherrypy.engine, '/tmp/sunset.pid').subscribe()
     Daemonizer(cherrypy.engine).subscribe()
     cherrypy.quickstart(Root())
 
