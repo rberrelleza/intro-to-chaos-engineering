@@ -1,2 +1,2 @@
 deploy:
-- helm upgrade --install okteto/theia intro-to-chaos-engineering --set runtime=python --set repository="https://github.com/rberrelleza/intro-to-chaos-engineering"
+- helm upgrade --install intro-to-chaos-engineering okteto/theia --set runtime=python --set repository="https://github.com/rberrelleza/intro-to-chaos-engineering"
